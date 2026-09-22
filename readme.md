@@ -3,7 +3,7 @@
 Official repository for the paper:
 > **FRES-Net: Fast Residual Efficient Segmentation Network for Lightweight Crop–Weed Semantic Segmentation**  
 > *Indra Agustian, Igi Ardiyanto, Sunu Wibirama*  
-> Department of Electrical and Information Engineering, Faculty of Engineering, Universitas Gadjah M0a, Yogyakarta, Indonesia.
+> Department of Electrical and Information Engineering, Faculty of Engineering, Universitas Gadjah Mada, Yogyakarta, Indonesia.
 
 ---
 
