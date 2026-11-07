@@ -18,14 +18,14 @@
 
 ## 🌟 Key Highlights
 
-* **Ultra-Lightweight Footprint:** Only **0.55 M parameters** and **1.94 GFLOPs** (at 512×512 resolution), making FRES-Net up to **100× smaller** than conventional segmentation models (e.g., DeepLabV3+ with ResNeXt-101 at 58.9 M parameters).
+* **Ultra-Lightweight Footprint:** Only **0.554 M parameters** and **10.88 GFLOPs** (at 512×512 resolution), making FRES-Net over **100× smaller** than conventional segmentation models (e.g., DeepLabV3+ with ResNeXt-101 at 58.9 M parameters and 346.8 GFLOPs).
 * **Competitive Benchmark Accuracy:**
   * **PhenoBench Benchmark:** **84.41% mIoU** on the official blind test server (**Rank 8 on CodaBench**), outperforming heavy baselines while utilizing <1% of their parameter budget.
-  * **CWFID Benchmark:** **72.10% mIoU** (83.21% $F_1^{cw}$) on Protocol 1 and **66.60% mIoU** on the rigorous cluster-stratified Protocol 2.
+  * **CWFID Benchmark:** **72.80% mIoU** (74.75% $F_1^{cw}$, PDR = 6.69) on Protocol 1 and **78.64% mIoU** (68.70% $\mathrm{mIoU}_{cw}$, PDR = 7.23) on the rigorous cluster-stratified Protocol 2.
 * **Real-Time Edge Inference:**
   * **107.5 FPS** on NVIDIA RTX 4090 GPU (9.30 ms latency).
   * **63.8 FPS** on NVIDIA Jetson Orin Nano edge platform (15.67 ms latency) — well exceeding standard real-time field robotics thresholds (30 FPS).
-* **Self-Contained Pretrained Weights:** Direct out-of-the-box weights (`.pth`, ~2.2 MB each) included for inference, zero-shot testing, and rapid fine-tuning on custom agricultural datasets.
+* **Self-Contained Pretrained Weights:** Direct out-of-the-box weights (`.pth`, ~2.18 MB each) included for inference, zero-shot testing, and rapid fine-tuning on custom agricultural datasets.
 
 ---
 
@@ -81,7 +81,7 @@ fresnet/
 │   └── splits/
 │       ├── cwfid_protocol1_split.json  # Fixed standard 45/6/9 split indices
 │       └── cwfid_protocol2_split.json  # Cluster-stratified 45/6/9 split indices
-├── pretrained_weights/            # Curated pretrained checkpoints (~2.2 MB each)
+├── pretrained_weights/            # Curated pretrained checkpoints (~2.18 MB each)
 │   ├── fresnet_phenobench_best.pth
 │   ├── fresnet_phenobench_best_weed_iou.pth
 │   ├── fresnet_cwfid_protocol1_best.pth
@@ -132,7 +132,7 @@ python inference.py \
 import torch
 from models.fresnet import FRESNet
 
-# Initialize FRES-Net (0.55 M params)
+# Initialize FRES-Net (0.554 M params, 10.88 GFLOPs)
 model = FRESNet(num_classes=3, width_mult=1.0)
 
 # Load pretrained weights
@@ -152,14 +152,14 @@ with torch.no_grad():
 
 All pretrained weights are included directly in [`pretrained_weights/`](file:///G:/My%20Drive/fresnet/pretrained_weights):
 
-| Model Checkpoint | Dataset | Protocol / Scaling | Params | FLOPs | mIoU | Weed IoU | Crop IoU | $F_1^{cw}$ |
-| :--- | :--- | :--- | :---: | :---: | :---: | :---: | :---: | :---: |
-| [`fresnet_phenobench_best.pth`](file:///G:/My%20Drive/fresnet/pretrained_weights/fresnet_phenobench_best.pth) | **PhenoBench** | Full 512×512 ($w=1.00$) | **0.55 M** | 1.94 G | **84.41%** | 86.90% | 76.50% | 81.70% |
-| [`fresnet_phenobench_best_weed_iou.pth`](file:///G:/My%20Drive/fresnet/pretrained_weights/fresnet_phenobench_best_weed_iou.pth) | **PhenoBench** | Full 512×512 ($w=1.00$) | **0.55 M** | 1.94 G | **84.15%** | **87.21%** | 76.32% | 81.76% |
-| [`fresnet_cwfid_protocol1_best.pth`](file:///G:/My%20Drive/fresnet/pretrained_weights/fresnet_cwfid_protocol1_best.pth) | **CWFID** | Protocol 1 ($w=1.00$) | **0.55 M** | 1.94 G | **72.10%** | 71.40% | 74.80% | **83.21%** |
-| [`fresnet_cwfid_protocol2_best.pth`](file:///G:/My%20Drive/fresnet/pretrained_weights/fresnet_cwfid_protocol2_best.pth) | **CWFID** | Protocol 2 ($w=1.00$) | **0.55 M** | 1.94 G | **66.60%** | 64.90% | 68.30% | **78.47%** |
-| [`fresnet_w033_cwfid_prot2_best.pth`](file:///G:/My%20Drive/fresnet/pretrained_weights/fresnet_w033_cwfid_prot2_best.pth) | **CWFID** | Protocol 2 ($w=0.33$) | **0.18 M** | 0.65 G | **58.60%** | 56.40% | 60.80% | **72.10%** |
-| [`fresnet_w300_cwfid_prot2_best.pth`](file:///G:/My%20Drive/fresnet/pretrained_weights/fresnet_w300_cwfid_prot2_best.pth) | **CWFID** | Protocol 2 ($w=3.00$) | **3.61 M** | 13.84 G | **71.74%** | 71.30% | 73.90% | **83.05%** |
+| Model Checkpoint | Dataset | Protocol / Scaling | Params (M) | GFLOPs ($512^2$) | Test mIoU | Weed IoU | Crop IoU | $\mathrm{mIoU}_{cw}$ | PDR |
+| :--- | :--- | :--- | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
+| [`fresnet_phenobench_best.pth`](file:///G:/My%20Drive/fresnet/pretrained_weights/fresnet_phenobench_best.pth) | **PhenoBench** | Full 512×512 ($w=1.00$) | **0.554** | **10.88** | **84.41%** | 86.90% | 76.50% | 81.70% | **7.76** |
+| [`fresnet_phenobench_best_weed_iou.pth`](file:///G:/My%20Drive/fresnet/pretrained_weights/fresnet_phenobench_best_weed_iou.pth) | **PhenoBench** | Full 512×512 ($w=1.00$) | **0.554** | **10.88** | **84.15%** | **87.21%** | 76.32% | 81.76% | **7.73** |
+| [`fresnet_cwfid_protocol1_best.pth`](file:///G:/My%20Drive/fresnet/pretrained_weights/fresnet_cwfid_protocol1_best.pth) | **CWFID** | Protocol 1 ($w=1.00$) | **0.554** | **10.88** | **72.80%** | 69.22% | 51.15% | 60.19% | **6.69** |
+| [`fresnet_cwfid_protocol2_best.pth`](file:///G:/My%20Drive/fresnet/pretrained_weights/fresnet_cwfid_protocol2_best.pth) | **CWFID** | Protocol 2 ($w=1.00$) | **0.554** | **10.88** | **78.64%** | 76.93% | 60.46% | 68.70% | **7.23** |
+| [`fresnet_w033_cwfid_prot2_best.pth`](file:///G:/My%20Drive/fresnet/pretrained_weights/fresnet_w033_cwfid_prot2_best.pth) | **CWFID** | Protocol 2 ($w=0.33$) | **0.141** | **2.94** | **73.18%** | 70.88% | 50.42% | 60.65% | **24.89** |
+| [`fresnet_w300_cwfid_prot2_best.pth`](file:///G:/My%20Drive/fresnet/pretrained_weights/fresnet_w300_cwfid_prot2_best.pth) | **CWFID** | Protocol 2 ($w=3.00$) | **3.598** | **49.34** | **82.40%** | 79.92% | 68.69% | 74.30% | **1.67** |
 
 *Note: Pretrained weights and training checkpoints are also mirrored on Google Drive: [Open Google Drive Link].*
 
