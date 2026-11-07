@@ -15,14 +15,14 @@ class CWFIDDataset(Dataset):
     
     Classes:
       0: Background / Soil
-      1: Crop (Sugar beet)
+      1: Crop (Sugar beet / Carrot)
       2: Weed
     """
     def __init__(
         self,
         root_dir: str,
         target_size: Tuple[int, int] = (512, 512),
-        split: str = 'train',
+        split: str = 'test',
         protocol: int = 1,
         custom_indices: Optional[List[int]] = None,
         is_train: bool = False
@@ -59,10 +59,17 @@ class CWFIDDataset(Dataset):
             all_files = sorted(os.listdir(self.img_dir))
             for idx in self.indices:
                 prefix = f"{idx:03d}_"
+                matched = False
                 for f in all_files:
                     if f.startswith(prefix) and f.endswith('_image.png'):
                         self.image_files.append(f)
+                        matched = True
                         break
+                if not matched:
+                    # Direct standard naming fallback
+                    self.image_files.append(f"{idx:03d}_image.png")
+        else:
+            self.image_files = [f"{idx:03d}_image.png" for idx in self.indices]
 
     def __len__(self) -> int:
         return len(self.image_files)

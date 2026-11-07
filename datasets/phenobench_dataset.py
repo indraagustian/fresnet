@@ -10,15 +10,16 @@ class PhenoBenchDataset(Dataset):
     """
     Dataset loader for PhenoBench Semantic Segmentation Benchmark.
     Resolution: 512x512
+    
     Classes:
-      0: Background / Soil
-      1: Crop (Sugar beet)
-      2: Weed
+      0: Soil / Background
+      1: Crop (Sugar beet) [including class 3: Partial Crop]
+      2: Weed [including class 4: Partial Weed]
     """
     def __init__(
         self,
         root_dir: str,
-        split: str = 'train',
+        split: str = 'val',
         target_size: Tuple[int, int] = (512, 512),
         is_train: bool = False
     ):
@@ -32,7 +33,7 @@ class PhenoBenchDataset(Dataset):
 
         self.img_names = []
         if os.path.exists(self.img_dir):
-            self.img_names = sorted([f for f in os.listdir(self.img_dir) if f.endswith(('.png', '.jpg', '.jpeg'))])
+            self.img_names = sorted([f for f in os.listdir(self.img_dir) if f.lower().endswith(('.png', '.jpg', '.jpeg', '.tiff'))])
 
     def __len__(self) -> int:
         return len(self.img_names)
@@ -47,7 +48,17 @@ class PhenoBenchDataset(Dataset):
         if os.path.exists(mask_path):
             mask = Image.open(mask_path)
             mask_np = np.array(mask, dtype=np.int64)
-            mask_tensor = torch.from_numpy(mask_np).long().unsqueeze(0)
+            if len(mask_np.shape) == 3:
+                mask_np = mask_np[:, :, 0]
+                
+            # Crucial benchmark mapping: Merge partial labels into main classes
+            # 3 -> 1 (Partial-Crop -> Crop), 4 -> 2 (Partial-Weed -> Weed)
+            mask_merged = mask_np.copy()
+            mask_merged[mask_np == 3] = 1
+            mask_merged[mask_np == 4] = 2
+            mask_merged = np.clip(mask_merged, 0, 2)
+            
+            mask_tensor = torch.from_numpy(mask_merged).long().unsqueeze(0)
         else:
             # Blind test set dummy mask
             mask_tensor = torch.zeros((1, image.height, image.width), dtype=torch.long)
