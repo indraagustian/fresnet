@@ -1,0 +1,4 @@
+crop_all: 92.4
+mIoU_all: 84.41
+soil_all: 99.1
+weed_all: 61.74

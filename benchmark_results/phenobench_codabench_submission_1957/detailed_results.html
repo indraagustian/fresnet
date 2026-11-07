@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en" style="scroll-behavior: smooth;">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Approach details</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css"
+    integrity="sha512-1sCRPdkRXhBV2PBLUdRb4tMg1w2YPf37qatUFeS7zlBy7jJI8Lf4VHwWfZZfpXtYSLy85pkm9GaYVYMfw5BC1A=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tabulator/4.4.3/css/bulma/tabulator_bulma.min.css">
+</head>
+<body>
+  <div class="container">
+    <div class="alert alert-warning" role="alert">
+      <b>Disclaimer:</b> We are not responsible for the provided information and external links, since these are provided by the submission.
+    </div>
+    <div class="row">
+      <h3>Approach Information</h3>
+      <table class="table">
+      <thead class="table-light">
+        <th>Name</th>
+        <th>PDF</th>
+        <th>Code</th>
+      </thead> 
+      <tr>
+        <td>FRESNet+PCL+ECA+ERFNetDec Optimized Thresholds</td>
+        <td><a href="" target="_blank">Link</a></td>
+        <td><a href="" target="_blank">Link</a></td>
+      </tr>
+      </table>
+      <p class="text-muted text-center fs-6">(Use Ctrl + left click to open links in a new tab.)</p>
+    </div>
+    <h3>Detailed Results</h3>
+
+    <div class="row">
+      <div class="card card-body text-center" id="yearwise_results"></div>
+    </div>
+    <div class="row">
+      <div class="card card-body text-center" id="datewise_results"></div>
+    </div>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.min.js"
+    integrity="sha384-kjU+l4N0Yf4ZOJErLsIcvOU2qSb74wXpOhqTvwVx3OElZRweTnQ6d31fXEoRD1Jy" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/tabulator/4.4.3/js/tabulator.min.js"></script>
+
+  <script type="text/javascript">
+    let table_data_year = [{"year": "all", "mIoU": 84.41, "crop": 92.4, "weed": 61.74, "soil": 99.1}, {"year": "2020", "mIoU": 84.9, "crop": 92.42, "weed": 63.09, "soil": 99.19}, {"year": "2021", "mIoU": 79.97, "crop": 92.31, "weed": 49.59, "soil": 98.02}];
+    let table_data_date = [{"date": "2020-05-15", "mIoU": 78.68, "crop": 89.29, "weed": 47.16, "soil": 99.58}, {"date": "2020-05-26", "mIoU": 83.78, "crop": 92.82, "weed": 59.99, "soil": 98.52}, {"date": "2020-06-05", "mIoU": 88.62, "crop": 94.74, "weed": 73.13, "soil": 97.99}, {"date": "2021-05-20", "mIoU": 77.46, "crop": 82.58, "weed": 50.5, "soil": 99.31}, {"date": "2021-05-28", "mIoU": 85.67, "crop": 87.99, "weed": 69.85, "soil": 99.18}, {"date": "2021-06-01", "mIoU": 75.18, "crop": 86.45, "weed": 40.64, "soil": 98.44}, {"date": "2021-06-10", "mIoU": 79.4, "crop": 93.23, "weed": 48.07, "soil": 96.9}];
+  
+    table = new Tabulator("#yearwise_results", {
+      layout: "fitData",
+      data: table_data_year,
+      columns: [{title: "Year", field: "year", width:200, align: "center"}, 
+                {title: "mIoU", field: "mIoU", width:100, align: "center"},
+                {title: "crop", field: "crop", width:100, align: "center"},
+                {title: "weed", field: "weed", width:100, align: "center"},
+                {title: "soil", field: "soil", width:100, align: "center"}]
+    });
+
+    table = new Tabulator("#datewise_results", {
+      layout: "fitData",
+      data: table_data_date,
+      columns: [{title: "Date", field: "date", width:200, align: "center"}, 
+                {title: "mIoU", field: "mIoU", width:100, align: "center"},
+                {title: "crop", field: "crop", width:100, align: "center"},
+                {title: "weed", field: "weed", width:100, align: "center"},
+                {title: "soil", field: "soil", width:100, align: "center"}]
+    });
+  </script>
+</body>
+</html>
