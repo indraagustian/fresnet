@@ -20,7 +20,7 @@
 
 * **Ultra-Lightweight Footprint:** Only **0.554 M parameters** and **10.88 GFLOPs** (at 512×512 resolution), making FRES-Net over **100× smaller** than conventional segmentation models (e.g., DeepLabV3+ with ResNeXt-101 at 58.9 M parameters and 346.8 GFLOPs).
 * **Competitive Benchmark Accuracy:**
-  * **PhenoBench Benchmark:** **84.41% mIoU** on the official blind test server (**Rank 8 on CodaBench**), outperforming heavy baselines while utilizing <1% of their parameter budget.
+  * **PhenoBench Benchmark:** **84.41% mIoU** on the official blind test server, outperforming heavy baselines while utilizing <1% of their parameter budget.
   * **CWFID Benchmark:** **72.80% mIoU** (74.75% $F_1^{cw}$, PDR = 6.69) on Protocol 1 and **78.64% mIoU** (68.70% $\mathrm{mIoU}_{cw}$, PDR = 7.23) on the rigorous cluster-stratified Protocol 2.
 * **Real-Time Edge Inference:**
   * **107.5 FPS** on NVIDIA RTX 4090 GPU (9.30 ms latency).

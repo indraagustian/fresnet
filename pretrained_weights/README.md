@@ -11,7 +11,7 @@ All models are fully compatible with PyTorch 2.x and torchvision. Because of FRE
 
 | Checkpoint File | Target Benchmark | Protocol / Variant | Parameters | GFLOPs ($512^2$) | File Size | Key Test Performance | Primary Use Case |
 | :--- | :--- | :--- | :---: | :---: | :---: | :---: | :--- |
-| `fresnet_phenobench_best.pth` | **PhenoBench** | Full 512×512 ($w=1.00$) | **0.554 M** | **10.88 G** | 2.19 MB | **84.41% mIoU** (Rank 8 CodaBench), 86.9% Weed IoU | Out-of-the-box sugar beet & weed segmentation / Transfer learning |
+| `fresnet_phenobench_best.pth` | **PhenoBench** | Full 512×512 ($w=1.00$) | **0.554 M** | **10.88 G** | 2.19 MB | **84.41% mIoU** (Official Blind Test Server), 86.9% Weed IoU | Out-of-the-box sugar beet & weed segmentation / Transfer learning |
 | `fresnet_phenobench_best_weed_iou.pth` | **PhenoBench** | Full 512×512 ($w=1.00$) | **0.554 M** | **10.88 G** | 2.18 MB | **87.21% Weed IoU**, 84.15% mIoU | Weed-priority precision robotic spraying |
 | `fresnet_cwfid_protocol1_best.pth` | **CWFID** | Protocol 1 ($w=1.00$) | **0.554 M** | **10.88 G** | 2.19 MB | **72.80% mIoU**, 74.75% $F_1^{cw}$ (PDR: 6.69) | Standard benchmark reproduction (Protocol 1) |
 | `fresnet_cwfid_protocol2_best.pth` | **CWFID** | Protocol 2 ($w=1.00$) | **0.554 M** | **10.88 G** | 2.18 MB | **78.64% mIoU**, 68.70% $\mathrm{mIoU}_{cw}$ (PDR: 7.23) | Cluster-stratified benchmark reproduction (Protocol 2) |
