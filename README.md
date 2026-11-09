@@ -245,11 +245,11 @@ If you find FRES-Net useful in your research or applications, please cite our pa
 
 ```bibtex
 @article{agustian2026fresnet,
-  title   = {Efficient crop and weed segmentation using a lightweight factorized network and contrastive learning},
-  author  = {Agustian, Indra and Ardiyanto, Igi and Wibirama, Sunu},
-  journal = {Nexus},
-  year    = {2026},
-  publisher = {Cell Press}
+  title        = {Efficient Crop and Weed Segmentation Using a Lightweight Factorized Network and Contrastive Learning},
+  author       = {Agustian, Indra and Ardiyanto, Igi and Faurina, Ruvita and Wibirama, Sunu},
+  year         = {2026},
+  journal = {Under review},
+  year    = {2026}
 }
 ```
 
