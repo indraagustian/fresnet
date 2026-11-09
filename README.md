@@ -65,7 +65,7 @@ Input RGB (512x512)
 ## 📁 Official Benchmark Outputs
 
 Official CodaBench blind test evaluation outputs for submission FRESNet+PCL+ECA+ERFNetDec Optimized Thresholds (scoring run 1957) are archived in:
-* [enchmark_results/phenobench_codabench_submission_1957/](benchmark_results/phenobench_codabench_submission_1957/): Contains detailed_results.html, scores.txt, and per-date YAML score breakdowns generated directly by the official CodaBench evaluation server.
+* [Benchmark_results/phenobench_codabench_submission_1957/](benchmark_results/phenobench_codabench_submission_1957/): Contains detailed_results.html, scores.txt, and per-date YAML score breakdowns generated directly by the official CodaBench evaluation server.
 
 ---
 
