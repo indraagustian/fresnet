@@ -4,8 +4,7 @@
 
 [![PyTorch](https://img.shields.io/badge/PyTorch-2.0+-ee4c2c.svg?style=flat&logo=pytorch)](https://pytorch.org/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![Paper](https://img.shields.io/badge/Cell_Press-Nexus-0077b6.svg)](https://www.cell.com/nexus/home)
-[![Python](https://img.shields.io/badge/Python-3.9+-blue.svg)](https://www.python.org/)
+[![Python](https://img.shields.io/badge/Python-3.10+-3776ab.svg?style=flat&logo=python&logoColor=white)](https://www.python.org/)
 
 **Official PyTorch Implementation and Pretrained Models for:**  
 > **"Efficient crop and weed segmentation using a lightweight factorized network and contrastive learning"**  
