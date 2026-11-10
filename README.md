@@ -8,7 +8,7 @@
 
 **Official PyTorch Implementation and Pretrained Models for:**  
 > **"Efficient crop and weed segmentation using a lightweight factorized network and contrastive learning"**  
-> *Indra Agustian, Igi Ardiyanto, and Sunu Wibirama*  
+> *Indra Agustian, Igi Ardiyanto, Ruvita Faurina and Sunu Wibirama*  
 > Universitas Gadjah Mada, Indonesia
 
 </div>
