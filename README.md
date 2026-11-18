@@ -243,12 +243,12 @@ python tools/export_onnx.py \
 If you find FRES-Net useful in your research or applications, please cite our paper:
 
 ```bibtex
-@article{agustian2026fresnet,
-  title        = {Efficient Crop and Weed Segmentation Using a Lightweight Factorized Network and Contrastive Learning},
+@misc{agustian2026fresnet,
   author       = {Agustian, Indra and Ardiyanto, Igi and Faurina, Ruvita and Wibirama, Sunu},
+  title        = {Efficient Crop and Weed Segmentation Using a Lightweight Factorized Network and Contrastive Learning},
   year         = {2026},
-  journal = {Under review},
-  year    = {2026}
+  howpublished = {\url{https://github.com/indraagustian/fresnet}},
+  note         = {Manuscript under review; official code repository}
 }
 ```
 
